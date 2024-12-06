@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - GearShift Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add icon library for feature icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Keep your existing base styles */
+        :root {
+            --dark-blue: #0b112b;
+            --steel-blue: #4682b4;
+            --medium-blue: #27466c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+        }
+
+        /* Keep your existing nav styles */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 10px 40px;
+            background: var(--dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 80px;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            margin-right: 40px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--steel-blue);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* New Features Page Specific Styles */
+        .features-hero {
+            padding: 160px 40px 80px;
+            background: var(--dark-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .features-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--steel-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .comparison-section {
+            background: #f8f9fa;
+            padding: 80px 40px;
+        }
+
+        .comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .comparison-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .comparison-card h3 {
+            color: var(--steel-blue);
+            margin-bottom: 20px;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .comparison-card li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--steel-blue);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="GearShift">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="features-hero">
+        <h1>Automation That Works</h1>
+        <p>Discover how GearShift transforms dealership communications</p>
+    </section>
+
+    <section class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-robot feature-icon"></i>
+            <h3>AI-Powered Communication</h3>
+            <p>Instant responses to customer inquiries 24/7, using advanced AI to maintain natural conversations.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h3>Lead Generation</h3>
+            <p>Proactively identify and nurture potential leads through intelligent conversation tracking.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-sync feature-icon"></i>
+            <h3>Seamless Integration</h3>
+            <p>Effortlessly connects with your existing CRM and dealership management systems.</p>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="comparison-title">
+                <h2>Traditional vs GearShift</h2>
+                <p>See how we transform dealership operations</p>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>Traditional BDC</h3>
+                    <ul>
+                        <li>Limited working hours</li>
+                        <li>High operational costs</li>
+                        <li>Inconsistent response times</li>
+                        <li>Manual lead tracking</li>
+                        <li>Limited scalability</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h3>GearShift Solution</h3>
+                    <ul>
+                        <li>24/7 Availability</li>
+                        <li>90% Cost Reduction</li>
+                        <li>Instant Responses</li>
+                        <li>Automated Lead Management</li>
+                        <li>Unlimited Scalability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

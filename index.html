@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearShift - Automotive Communication Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="logo.png">
+
+    <style>
+        :root {
+            --dark-blue: #0b112b;
+            --steel-blue: #4682b4;
+            --medium-blue: #27466c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+        }
+
+/* Option 1: Larger Logo */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 10px 40px;
+    background: var(--dark-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: 80px;
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px; /* Increased spacing between links */
+    margin-right: 40px; /* Added right margin to the entire nav-links section */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.5px; /* Added letter spacing */
+    text-transform: uppercase; /* Made links uppercase for modern feel */
+    transition: all 0.3s ease;
+    padding: 8px 16px; /* Added padding around links */
+    border-radius: 4px; /* Slight rounding of corners */
+}
+
+.nav-links a:hover {
+    color: var(--steel-blue);
+    background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+}
+
+
+
+        .hero {
+            padding: 180px 40px 100px;
+            background: var(--dark-blue);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: white;
+            transform: skewY(-3deg);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: rgba(255,255,255,0.9);
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            background: var(--steel-blue);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(70,130,180,0.4);
+        }
+
+        .about-section {
+            padding: 100px 40px;
+            background: white;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    <!-- [Previous CSS styles remain unchanged] -->
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="GearShift Automotive Communication Platform Logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+<!-- Update your hero section CTA -->
+<section class="hero">
+    <h1>Revolutionize Your Dealership Communications</h1>
+    <p>Transform customer interactions with AI-powered automation that saves time, reduces costs, and drives results.</p>
+    <a href="https://calendly.com/aidanszwec/coffee-chat?back=1" target="_blank" class="cta-button">Get Started</a>
+</section>
+
+<!-- Updated video section with title -->
+<section class="video-section">
+    <div class="video-title">
+        <h2>See The Future of Dealership Automation</h2>
+        <p>Watch how GearShift reduces costs and improves efficiency across your entire operation</p>
+    </div>
+    <div class="video-container">
+        <video controls>
+            <source src="Interview.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<!-- Add these new styles to your existing <style> section -->
+<style>
+.video-section {
+    padding: 80px 40px;
+    background: white;
+}
+
+.video-title {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.video-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.video-title p {
+    font-size: 1.2rem;
+    color: var(--medium-blue);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: var(--dark-blue);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+}
+
+/* Update the existing cta-button style if needed */
+.cta-button {
+    background: var(--steel-blue);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(70,130,180,0.4);
+}
+
+@media (max-width: 768px) {
+    .video-title h2 {
+        font-size: 2rem;
+    }
+    
+    .video-title p {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="logo.png" alt="Founder">
+            </div>
+            <div class="about-content">
+                <h2>The Future of Automotive Sales</h2>
+                <p>We're transforming how dealerships communicate with customers through intelligent automation. Our AI-powered platform handles customer interactions 24/7, reducing costs while improving response times and consistency.</p>
+                <p>No more missed opportunities. No more overhead from traditional call centers. Just efficient, scalable communication that drives results.</p>
+            </div>
+        </div>
+    </section>
+    <!-- [Rest of the HTML remains unchanged] -->
+</body>
+</html>
+
+<section class="roi-section">
+    <div class="roi-container">
+        <div class="roi-header">
+            <h2>Calculate Your Savings</h2>
+            <p>See how much your dealership could save by switching to GearShift's $3,000/month automation solution</p>
+        </div>
+        <div class="calculator-container">
+            <div class="input-section">
+                <div class="input-group">
+                    <label>Number of BDC Representatives</label>
+                    <input type="number" id="bdcCount" min="1" value="1" class="roi-input">
+                </div>
+                <div class="input-group">
+                    <label>Average Monthly Salary per Rep ($)</label>
+                    <input type="number" id="salary" value="3500" class="roi-input">
+                </div>
+                <button onclick="calculateROI()" class="calculate-button">Calculate Savings</button>
+            </div>
+            <div class="results" id="results">
+                <div class="result-card">
+                    <h3>Current Annual BDC Cost</h3>
+                    <p class="result-value" id="traditionalCost">$0</p>
+                    <p class="cost-detail">Based on your staff count</p>
+                </div>
+                <div class="result-card highlight">
+                    <h3>Annual GearShift Cost</h3>
+                    <p class="result-value" id="gearshiftCost">$36,000</p>
+                    <p class="cost-detail">Fixed monthly retainer of $3,000</p>
+                </div>
+                <div class="result-card savings">
+                    <h3>Your Potential Annual Savings</h3>
+                    <p class="result-value" id="totalSavings">$0</p>
+                    <p class="cost-detail">Replace your entire BDC team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.roi-section {
+    padding: 100px 40px;
+    background: var(--dark-blue);
+    color: white;
+}
+
+.roi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.roi-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.roi-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.roi-header p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.calculator-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.input-section {
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.roi-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.roi-input:focus {
+    outline: none;
+    border-color: var(--steel-blue);
+    background: rgba(255,255,255,0.15);
+}
+
+.calculate-button {
+    width: 100%;
+    padding: 15px;
+    background: var(--steel-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(70,130,180,0.4);
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.result-card {
+    padding: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.result-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: rgba(255,255,255,0.9);
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--steel-blue);
+}
+
+.result-card.highlight {
+    background: var(--steel-blue);
+}
+
+.result-card.highlight .result-value {
+    color: white;
+}
+
+.result-card.savings {
+    background: rgba(255,255,255,0.2);
+}
+
+.result-card.savings .result-value {
+    color: #4CAF50;
+}
+
+.cost-detail {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 10px;
+}
+
+.result-card.highlight .cost-detail {
+    color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 768px) {
+    .results {
+        grid-template-columns: 1fr;
+    }
+    
+    .roi-header h2 {
+        font-size: 2rem;
+    }
+}
+</style>
+
+<script>
+function calculateROI() {
+    const bdcCount = document.getElementById('bdcCount').value;
+    const salary = document.getElementById('salary').value;
+    
+    const traditionalCost = bdcCount * salary * 12; // Annual BDC cost
+    const gearshiftCost = 3000 * 12; // Fixed $3000/month GearShift cost
+    const savings = traditionalCost - gearshiftCost;
+    
+    document.getElementById('traditionalCost').textContent = '$' + traditionalCost.toLocaleString();
+    document.getElementById('gearshiftCost').textContent = '$' + gearshiftCost.toLocaleString();
+    document.getElementById('totalSavings').textContent = '$' + savings.toLocaleString();
+    
+    document.getElementById('results').style.opacity = '1';
+}
+</script>
