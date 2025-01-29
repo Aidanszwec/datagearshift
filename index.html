@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - GearShift</title>
+    <title>GearShift - Automotive Communication Automation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="logo.png">
     <style>
-        /* Keep your existing base and nav styles */
         :root {
             --dark-blue: #0b112b;
             --steel-blue: #4682b4;
+            --accent-blue: #3b82f6;
+            --steel-blue-hover: #2563eb;
             --medium-blue: #27466c;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -21,9 +26,13 @@
         }
 
         body {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: var(--dark-blue);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background: white;
         }
 
         nav {
@@ -67,165 +76,289 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* About Page Specific Styles */
-        .about-hero {
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+            padding-bottom: 6rem;
+            padding-top: 80px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.15) 0%, transparent 50%);
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .hero {
             padding: 160px 40px 80px;
-            background: var(--dark-blue);
-            color: white;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .about-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
         }
 
-        .story-section {
+        .hero h1 span {
+            display: block;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        .hero h1 span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientFlow 3s ease infinite, slideUp 0.5s ease forwards 0.4s;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards 0.6s;
+        }
+
+        .highlight {
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .newsletter-form-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards 0.8s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .newsletter-form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 16px;
+        }
+
+        .newsletter-form-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .newsletter-form-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .newsletter-form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-form-button {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #60a5fa 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .newsletter-form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .video-section {
+            background: white;
             padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+            margin-top: -2rem;
+        }
+
+        .video-title {
+            text-align: center;
+            margin-bottom: 60px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .video-title h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .video-title p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.2s;
             background: white;
         }
 
-        .story-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        .founder-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .founder-image:hover {
-            transform: translateY(-10px);
-        }
-
-        .founder-image img {
+        .video-container video {
             width: 100%;
-            height: auto;
             display: block;
+            aspect-ratio: 16/9;
+            background: #f8fafc;
         }
 
-        .story-content {
-            padding: 20px;
+        .learn-more-container {
+            text-align: center;
+            margin-top: 60px;
         }
 
-        .story-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--dark-blue);
-        }
-
-        .story-content p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        .emoji {
-            font-size: 2rem;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .highlight-text {
-            color: var(--steel-blue);
+        .learn-more-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
             font-weight: 600;
+            font-size: 1.125rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.4s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .learn-more-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 24px -8px rgba(11, 17, 43, 0.3),
+                0 4px 8px -4px rgba(11, 17, 43, 0.2);
         }
 
         @media (max-width: 768px) {
-            .story-container {
-                grid-template-columns: 1fr;
+            .nav-links {
+                display: none;
             }
-            
-            .about-hero h1 {
-                font-size: 2.5rem;
+
+            nav {
+                padding: 10px 20px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .hero {
+                padding: 120px 24px 60px;
+            }
+
+            .video-section {
+                padding: 60px 24px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form-button {
+                width: 100%;
+            }
+
+            .hero-section {
+                clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
             }
         }
-
-        .vision-section {
-    padding: 80px 40px;
-    background: var(--dark-blue);
-    color: white;
-}
-
-.vision-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.vision-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.vision-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.vision-header p {
-    font-size: 1.2rem;
-    color: rgba(255,255,255,0.9);
-}
-
-.vision-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.vision-card {
-    background: rgba(255,255,255,0.1);
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.vision-card:hover {
-    transform: translateY(-10px);
-}
-
-.vision-card i {
-    font-size: 2.5rem;
-    color: var(--steel-blue);
-    margin-bottom: 20px;
-}
-
-.vision-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: var(--steel-blue);
-}
-
-.vision-card p {
-    color: rgba(255,255,255,0.9);
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .vision-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .vision-header h2 {
-        font-size: 2rem;
-    }
-}
-
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="logo.png" alt="GearShift">
+            <img src="logo.png" alt="GearShift Automotive Communication Platform Logo">
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
@@ -235,48 +368,47 @@
         </div>
     </nav>
 
-    <section class="about-hero">
-        <h1>Our Story</h1>
-        <p>From dealership experience to automation innovation</p>
-    </section>
+    <div class="hero-section">
+        <section class="hero">
+            <h1>
+                <span>10X Dealership</span>
+                <span>Efficiency Through</span>
+                <span class="gradient-text">Automation</span>
+            </h1>
+            <p>
+                Transform customer interactions with <span class="highlight">AI-powered automation</span> that saves time, reduces costs, and drives results. Our platform handles customer communication 24/7, ensuring no opportunity is missed.
+            </p>
+            <div class="newsletter-form-container">
+                <form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/cm6fej228000chrvuvzoojdem" method="POST">
+                    <input 
+                        class="newsletter-form-input" 
+                        name="email" 
+                        type="email" 
+                        placeholder="Enter your work email" 
+                        required
+                    >
+                    <button type="submit" class="newsletter-form-button">
+                        Get Product Info
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
 
-    <section class="story-section">
-        <div class="story-container">
-            <div class="founder-image">
-                <img src="aidan.png" alt="Aidan Szwec- Founder of GearShift">
-            </div>
-            <div class="story-content">
-                <h2>What is GearShift? <span class="emoji">⚙️</span></h2>
-                <p>During the summers I had internships or worked at my family's dealership, where I have been working at since before I could drive. Doing everything from washing cars to buying them.</p>
-                <p>Last summer when I was working as a customer service person I couldn't help but recognize how useful the application for an <span class="highlight-text">AI agent would be in that sector</span>.</p>
-                <p>After learning that automation tools are in continuous development and the dealer world was untapped in that regard I got to work. I started building my passion project GearShift, a long-term project bringing <span class="highlight-text">automation tools to dealers</span>, giving dealerships more efficient communication methods.</p>
-            </div>
+    <section class="video-section">
+        <div class="video-title">
+            <h2>See GearShift in Action</h2>
+            <p>Watch how our AI automation revolutionizes dealership communication and efficiency</p>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="Interview.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="learn-more-container">
+            <a href="features.html" class="learn-more-button">Learn More</a>
         </div>
     </section>
-
-    <section class="vision-section">
-        <div class="vision-container">
-            <div class="vision-header">
-                <h2>Our Vision</h2>
-                <p>Reshaping the Future of Automotive Communication</p>
-            </div>
-            <div class="vision-grid">
-                <div class="vision-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI-First Future</h3>
-                    <p>Creating a world where dealerships leverage AI to handle communication efficiently, allowing staff to focus on what matters most - building real relationships and closing deals.</p>
-                </div>
-                <div class="vision-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Cost Revolution</h3>
-                    <p>Dramatically reducing operational costs for dealerships while improving customer satisfaction through instant, accurate responses 24/7.</p>
-                </div>
-                <div class="vision-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Modern Experience</h3>
-                    <p>Building communication systems that meet today's customer expectations - instant, personalized, and pressure-free interactions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+</body>
+</html>
