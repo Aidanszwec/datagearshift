@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>GearShift - Automotive Communication Automation News</title>
+    <link>https://datagearshift.com</link>
+    <description>Latest updates and news about GearShift's automotive dealership automation platform</description>
+    <language>en-us</language>
+    <item>
+        <title>GearShift Launches AI-Powered Communication Platform for Automotive Dealerships</title>
+        <link>https://datagearshift.com/news/launch</link>
+        <description>Transform your dealership's efficiency with our new AI-powered communication platform</description>
+        <pubDate>Mon, 20 Jan 2024 12:00:00 GMT</pubDate>
+    </item>
+</channel>
+</rss>
